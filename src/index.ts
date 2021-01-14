@@ -1,5 +1,6 @@
 import chalk from 'chalk';
 import inquirer from 'inquirer';
+import { runnerFunction } from './runner';
 import { DatabaseService } from './Services/DatabaseService';
 
 require('dotenv').config();
@@ -36,7 +37,12 @@ const app = async () => {
   await DatabaseService.getInstance().testDatabaseConnection();
   console.log(chalk.green(chalk.bold('Success ')) + 'Connected to Database');
   inquirer.prompt(questions).then((answers: inquirer.Answers) => {
-    console.log(answers);
+    runnerFunction(answers as { list: string; html: string; text: string; subject: string; email: string }).catch(
+      err => {
+        console.error(chalk.red(chalk.bold('Error ')) + err.message);
+        process.exit(-1);
+      },
+    );
   });
 };
 
