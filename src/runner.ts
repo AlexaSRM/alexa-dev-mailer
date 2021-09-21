@@ -12,20 +12,16 @@ const delay = delayInms => {
     }, delayInms);
   });
 };
-export const runnerFunction = async (options: {
-  list: string;
-  html: string;
-  text: string;
-  subject: string;
-  email: string;
-}) => {
+export const runnerFunction = async (options: { list: string; html: string; text: string; subject: string }) => {
   try {
     console.log(chalk.blue(chalk.bold('Info ')) + 'Reading HTML File...');
     let htmlBuffer = await fs.readFile(join(__dirname, '..', options.html));
     console.log(chalk.blue(chalk.bold('Info ')) + 'Reading Text File...');
     let textBuffer = await fs.readFile(join(__dirname, '..', options.text));
     console.log(chalk.blue(chalk.bold('Info ')) + 'Fetching Mailing List...');
-    let response = await DatabaseService.getMongoDatabase().collection('alexa-mail').findOne({ name: options.list });
+    let response = await DatabaseService.getMongoDatabase()
+      .collection(process.env.COLLECTION_NAME)
+      .findOne({ name: options.list });
     if (response === null) throw Error('There is some problem with fetching the mailing list');
 
     for (let i = 0; i < response.users.length; i++) {
@@ -35,7 +31,6 @@ export const runnerFunction = async (options: {
         getTemplatedString(user, textBuffer.toString()),
         options.subject,
         user.email,
-        options.email + '@alexadevsrm.com',
       );
       await delay(500);
       try {

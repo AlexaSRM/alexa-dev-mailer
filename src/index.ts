@@ -26,11 +26,6 @@ const questions: inquirer.QuestionCollection<any> = [
     name: 'subject',
     message: 'What will be the subject?',
   },
-  {
-    type: 'input',
-    name: 'email',
-    message: 'What alias you want to use?',
-  },
 ];
 
 const app = async () => {

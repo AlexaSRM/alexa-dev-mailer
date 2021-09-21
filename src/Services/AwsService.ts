@@ -16,13 +16,7 @@ export const sendEmail = (mail: SendEmailRequest) => {
   return request.promise();
 };
 
-export const createSesMail = (
-  html: string,
-  text: string,
-  subject: string,
-  receiverEmail: string,
-  fromEmail: string,
-): SendEmailRequest => {
+export const createSesMail = (html: string, text: string, subject: string, receiverEmail: string): SendEmailRequest => {
   const mail: SendEmailRequest = {
     Content: {
       Simple: {
@@ -42,8 +36,8 @@ export const createSesMail = (
     Destination: {
       ToAddresses: [receiverEmail],
     },
-    ReplyToAddresses: ['contact@alexadevsrm.com'],
-    FromEmailAddress: fromEmail,
+    ReplyToAddresses: [process.env.REPLY_EMAIL],
+    FromEmailAddress: process.env.FROM_EMAIL,
   };
   return mail;
 };
