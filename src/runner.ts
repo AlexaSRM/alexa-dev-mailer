@@ -26,7 +26,7 @@ export const runnerFunction = async (options: { list: string; html: string; text
     if (response === null) throw Error('There is some problem with fetching the mailing list');
 
     const ResponseLength = response.users.length;
-    let Success: number = 0;
+    let success = 0;
     console.log(chalk.blue(chalk.bold('Info ')) + `Started Sending ${ResponseLength} Emails...`);
 
     for (let i = 0; i < ResponseLength; i++) {
@@ -40,12 +40,12 @@ export const runnerFunction = async (options: { list: string; html: string; text
       await delay(500);
       try {
         await sendEmail(mail);
-        console.log(chalk.green(chalk.bold(`Success [${Success + 1}] `)) + 'Email sent to ' + user.email);
+        console.log(chalk.green(chalk.bold(`Success [${success + 1}] `)) + 'Email sent to ' + user.email);
       } catch (err) {
         console.error(chalk.red(chalk.bold('Error ')) + err.message + user.email);
       }
     }
-    console.log(chalk.blue(chalk.bold('Info ')) + `Mailing process finished. ${Success}/${ResponseLength} emails sent.`);
+    console.log(chalk.blue(chalk.bold('Info ')) + `Mailing process finished. ${success}/${ResponseLength} emails sent.`);
     process.exit();
   } catch (err) {
     console.error(chalk.red(chalk.bold('Error ')) + err.message);
