@@ -40,7 +40,7 @@ export const runnerFunction = async (options: { list: string; html: string; text
       );
       await delay(500)
       try {
-        await sendEmail(mail);
+        // await sendEmail(mail);
         console.log(chalk.green(chalk.bold(`Success [${success += 1}] `)) + 'Email sent to ' + user.email);
       } catch (err) {
         failedEmails.push(user.email);
