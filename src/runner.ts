@@ -37,10 +37,10 @@ export const runnerFunction = async (options: { list: string; html: string; text
         options.subject,
         user.email,
       );
-      await delay(500);
+      await delay(500)
       try {
         await sendEmail(mail);
-        console.log(chalk.green(chalk.bold(`Success [${success + 1}] `)) + 'Email sent to ' + user.email);
+        console.log(chalk.green(chalk.bold(`Success [${success += 1}] `)) + 'Email sent to ' + user.email);
       } catch (err) {
         console.error(chalk.red(chalk.bold('Error ')) + err.message + user.email);
       }
