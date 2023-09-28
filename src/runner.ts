@@ -1,3 +1,4 @@
+
 import chalk from 'chalk';
 import { promises as fs } from 'fs';
 import { join } from 'path';
@@ -24,7 +25,11 @@ export const runnerFunction = async (options: { list: string; html: string; text
       .findOne({ name: options.list });
     if (response === null) throw Error('There is some problem with fetching the mailing list');
 
-    for (let i = 0; i < response.users.length; i++) {
+    const ResponseLength = response.users.length;
+    let Success: number = 0;
+    console.log(chalk.blue(chalk.bold('Info ')) + `Started Sending ${ResponseLength} Emails...`);
+
+    for (let i = 0; i < ResponseLength; i++) {
       let user = response.users[i];
       let mail = createSesMail(
         getTemplatedString(user, htmlBuffer.toString()),
@@ -35,15 +40,16 @@ export const runnerFunction = async (options: { list: string; html: string; text
       await delay(500);
       try {
         await sendEmail(mail);
-        console.log(chalk.green(chalk.bold('Success ')) + 'Email sent to ' + user.email);
+        console.log(chalk.green(chalk.bold(`Success [${Success + 1}] `)) + 'Email sent to ' + user.email);
       } catch (err) {
-        console.error(chalk.red(chalk.bold('Error ')) + err.message);
+        console.error(chalk.red(chalk.bold('Error ')) + err.message + user.email);
       }
     }
-    console.log(chalk.blue(chalk.bold('Info ')) + 'Mailing process finished');
+    console.log(chalk.blue(chalk.bold('Info ')) + `Mailing process finished. ${Success}/${ResponseLength} emails sent.`);
     process.exit();
   } catch (err) {
     console.error(chalk.red(chalk.bold('Error ')) + err.message);
     throw err;
   }
 };
+
