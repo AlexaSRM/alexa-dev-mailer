@@ -42,7 +42,7 @@ export const runnerFunction = async (options: { list: string; html: string; text
         await sendEmail(mail);
         console.log(chalk.green(chalk.bold(`Success [${success += 1}] `)) + 'Email sent to ' + user.email);
       } catch (err) {
-        console.error(chalk.red(chalk.bold('Error ')) + err.message + user.email);
+        console.error(chalk.red(chalk.bold('Error ')) + user.email + err.message);
       }
     }
     console.log(chalk.blue(chalk.bold('Info ')) + `Mailing process finished. ${success}/${ResponseLength} emails sent.`);
