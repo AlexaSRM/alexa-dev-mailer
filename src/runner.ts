@@ -24,13 +24,13 @@ export const runnerFunction = async (options: { list: string; html: string; text
       .findOne({ name: options.list });
     if (response === null) throw Error('There is some problem with fetching the mailing list');
 
-    const ResponseLength = response.users.length;
+    const responseLength = response.users.length;
     let success = 0,
       failed = 0;
     let failedEmails = [];
-    console.log(chalk.blue(chalk.bold('Info ')) + `Started Sending ${ResponseLength} Emails...`);
+    console.log(chalk.blue(chalk.bold('Info ')) + `Started Sending ${responseLength} Emails...`);
 
-    for (let i = 0; i < ResponseLength; i++) {
+    for (let i = 0; i < responseLength; i++) {
       let user = response.users[i];
       let mail = createSesMail(
         getTemplatedString(user, htmlBuffer.toString()),
@@ -50,7 +50,7 @@ export const runnerFunction = async (options: { list: string; html: string; text
     console.log(chalk.blue(chalk.bold('Info ')) + 'Mailing process finished');
     console.log(
       chalk.blue(chalk.bold('Total ')) +
-        ResponseLength +
+        responseLength +
         chalk.green(chalk.bold(' Success ')) +
         success +
         chalk.red(chalk.bold(' Failed ')) +
