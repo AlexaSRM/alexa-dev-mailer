@@ -1,4 +1,3 @@
-
 import chalk from 'chalk';
 import { promises as fs } from 'fs';
 import { join } from 'path';
@@ -26,7 +25,8 @@ export const runnerFunction = async (options: { list: string; html: string; text
     if (response === null) throw Error('There is some problem with fetching the mailing list');
 
     const ResponseLength = response.users.length;
-    let success = 0, failed = 0;
+    let success = 0,
+      failed = 0;
     let failedEmails = [];
     console.log(chalk.blue(chalk.bold('Info ')) + `Started Sending ${ResponseLength} Emails...`);
 
@@ -38,17 +38,24 @@ export const runnerFunction = async (options: { list: string; html: string; text
         options.subject,
         user.email,
       );
-      await delay(500)
+      await delay(500);
       try {
-        // await sendEmail(mail);
-        console.log(chalk.green(chalk.bold(`Success [${success += 1}] `)) + 'Email sent to ' + user.email);
+        await sendEmail(mail);
+        console.log(chalk.green(chalk.bold(`Success [${(success += 1)}] `)) + 'Email sent to ' + user.email);
       } catch (err) {
         failedEmails.push(user.email);
-        console.error(chalk.red(chalk.bold(`Error [${failed += 1}]`)) + user + err.message);
+        console.error(chalk.red(chalk.bold(`Error [${(failed += 1)}]`)) + user + err.message);
       }
     }
     console.log(chalk.blue(chalk.bold('Info ')) + 'Mailing process finished');
-    console.log(chalk.blue(chalk.bold('Total ')) + ResponseLength + chalk.green(chalk.bold(' Success ')) + success + chalk.red(chalk.bold(' Failed ')) + failed);
+    console.log(
+      chalk.blue(chalk.bold('Total ')) +
+        ResponseLength +
+        chalk.green(chalk.bold(' Success ')) +
+        success +
+        chalk.red(chalk.bold(' Failed ')) +
+        failed,
+    );
     if (failedEmails.length > 0) {
       console.log(chalk.red(chalk.bold('Failed Emails: ')) + failedEmails.join(', '));
     }
@@ -58,4 +65,3 @@ export const runnerFunction = async (options: { list: string; html: string; text
     throw err;
   }
 };
-
