@@ -28,6 +28,7 @@ export const runnerFunction = async (options: { list: string; html: string; text
     let success = 0,
       failed = 0;
     let failedEmails = [];
+    let failedUsers = [];
     console.log(chalk.blue(chalk.bold('Info ')) + `Started Sending ${responseLength} Emails...`);
 
     for (let i = 0; i < responseLength; i++) {
@@ -44,6 +45,7 @@ export const runnerFunction = async (options: { list: string; html: string; text
         console.log(chalk.green(chalk.bold(`Success [${(success += 1)}] `)) + 'Email sent to ' + user.email);
       } catch (err) {
         failedEmails.push(user.email);
+        failedUsers.push({ ...user, failedReason: err.message, failedAt: new Date() });
         console.error(chalk.red(chalk.bold(`Error [${(failed += 1)}]`)) + user + err.message);
       }
     }
@@ -58,6 +60,17 @@ export const runnerFunction = async (options: { list: string; html: string; text
     );
     if (failedEmails.length > 0) {
       console.log(chalk.red(chalk.bold('Failed Emails: ')) + failedEmails.join(', '));
+      const failedMailsObject = {
+        collectionName: process.env.COLLECTION_NAME,
+        listName: options.list,
+        subject: options.subject,
+        failedUsers,
+        timestamp: new Date(),
+      };
+      await DatabaseService.getMongoDatabase()
+      .collection('failed-mails')
+      .insertOne(failedMailsObject);
+      console.log(chalk.blue(chalk.bold('Info ')) + 'Failed Emails are saved in the database');
     }
     process.exit();
   } catch (err) {
