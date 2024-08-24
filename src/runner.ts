@@ -4,6 +4,7 @@ import { join } from 'path';
 import { createSesMail, sendEmail } from './Services/AwsService';
 import { DatabaseService } from './Services/DatabaseService';
 import { getTemplatedString } from './Services/TemplateService';
+import { createEmail, sendBulkEmail } from './Services/SenderMail';
 
 const delay = delayInms => {
   return new Promise(resolve => {
@@ -30,23 +31,36 @@ export const runnerFunction = async (options: { list: string; html: string; text
     let failedEmails = [];
     console.log(chalk.blue(chalk.bold('Info ')) + `Started Sending ${responseLength} Emails...`);
 
+    const bulkEmails = [];
     for (let i = 0; i < responseLength; i++) {
+      console.log("Here")
       let user = response.users[i];
-      let mail = createSesMail(
-        getTemplatedString(user, htmlBuffer.toString()),
-        getTemplatedString(user, textBuffer.toString()),
-        options.subject,
-        user.email,
+      console.log(user);
+      bulkEmails.push(
+        createEmail(
+          user.srmMailId,
+          user.firstName + ' ' + user.lastName,
+          getTemplatedString(user, htmlBuffer.toString()),
+          getTemplatedString(user, textBuffer.toString()),
+          options.subject,
+        ),
       );
-      await delay(500);
-      try {
-        await sendEmail(mail);
-        console.log(chalk.green(chalk.bold(`Success [${(success += 1)}] `)) + 'Email sent to ' + user.email);
-      } catch (err) {
-        failedEmails.push(user.email);
-        console.error(chalk.red(chalk.bold(`Error [${(failed += 1)}]`)) + user + err.message);
-      }
+      // let mail = createSesMail(
+      //   getTemplatedString(user, htmlBuffer.toString()),
+      //   getTemplatedString(user, textBuffer.toString()),
+      //   options.subject,
+      //   user.srmMailId,
+      // );
+      // await delay(500);
+      // try {
+      //   await sendEmail(mail);
+      //   console.log(chalk.green(chalk.bold(`Success [${(success += 1)}] `)) + 'Email sent to ' + user.email);
+      // } catch (err) {
+      //   failedEmails.push(user.email);
+      //   console.error(chalk.red(chalk.bold(`Error [${(failed += 1)}]`)) + user + err.message);
+      // }
     }
+    await sendBulkEmail(bulkEmails);
     console.log(chalk.blue(chalk.bold('Info ')) + 'Mailing process finished');
     console.log(
       chalk.blue(chalk.bold('Total ')) +
@@ -61,7 +75,7 @@ export const runnerFunction = async (options: { list: string; html: string; text
     }
     process.exit();
   } catch (err) {
-    console.error(chalk.red(chalk.bold('Error ')) + err.message);
+    console.error(chalk.red(chalk.bold('Error ')), err);
     throw err;
   }
 };
