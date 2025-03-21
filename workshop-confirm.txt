@@ -1,0 +1,24 @@
+Dear {{=it.firstName}},
+
+Thank you for RSVPing to our upcoming "WebSlinger: Mastering Web Development" workshop! We are excited to have you join us for this hands-on experience, where you'll dive into the essentials of HTML, CSS, JavaScript, and more.
+
+Workshop Details:
+- Date: 28th August, 2024
+- Time: 9:00 AM
+- Venue: Mini Hall 2, Dr. T.P Ganesan Auditorium
+
+To ensure you have the best experience, please follow these important instructions:
+
+Bring Your Laptop and Charger
+This workshop is hands-on, so all participants must bring their laptops and chargers. This will allow you to fully engage with the knowledge and insights you’ll gain during the workshop.
+
+
+Pre-installation Requirements
+To get the most out of this workshop, please have the following software installed on your laptop before the workshop starts:
+    1.Node.js: Please download and install Node.js from the following link: https://nodejs.org/en/download/prebuilt-installer
+    2. Visual Studio Code (VS Code): Please download and install Visual Studio Code from the following link: https://code.visualstudio.com/download
+
+We're looking forward to a great time of learning and coding together! 
+
+Warm Regards,
+Alexa Developers SRM ❤️.

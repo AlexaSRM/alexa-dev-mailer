@@ -1,0 +1,11 @@
+Dear {{=it.name}},
+
+Team name: {{=it.teamName}}
+Team ID: {{it.teamId}}
+
+Thank you for participating in the Regener8 Ideathon and submitting your team's project idea. While your proposal was impressive, we regret to inform you that your team was not selected for the final round.
+We appreciate the effort and creativity your team put into your submission. As a token of our appreciation, you will receive a participation certificate soon.
+We encourage you to continue honing your skills and to participate in future events. Thank you once again for your participation.
+
+Warm Regards,
+Alexa Developers SRM ❤️.

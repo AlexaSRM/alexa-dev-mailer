@@ -1,0 +1,14 @@
+Dear {{=it.name}},
+
+Team name: {{=it.teamName}}
+Team ID: {{=it.teamId}}                                                                                                                                                                                                
+
+We are thrilled to inform you that your team has been selected for the finals of the Regener8 Ideathon! Please look over the following 
+
+Event Details:
+Date: 30th August
+Time: The event will start promptly at 9:00 AM, so please make sure to arrive a little early for registration.
+Venue: G.N. Ramachandran Hall, Bio-Tech Block
+
+Please ensure all your team members are present and prepared with your presentation and necessary materials. This is an excellent opportunity to showcase your skills and compete with other talented teams.
+If you have any questions or need further assistance, please feel free to reach out. We look forward to seeing you at the event!

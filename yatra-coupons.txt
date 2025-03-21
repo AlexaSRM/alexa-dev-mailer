@@ -1,0 +1,20 @@
+Dear {{=it.name}},
+
+We hope this message finds you well!
+
+First and foremost, congratulations on being a finalist at the Regener8 Ideathon, held on August 30th! Your innovative ideas and hard work stood out among many participants, and we’re thrilled to have had you as part of this exciting journey.
+
+As a token of appreciation for your participation and achievement, we’re happy to share an exclusive Yatra coupon code, generously provided by our travel sponsor, Yatra, as part of our flagship event AlexaVerse. This code can be used to plan your next adventure or make travel bookings easier. NOTE: Coupon valid till Oct 30, 2024
+
+Your exclusive Yatra coupon code: {{=it.coupon}}
+
+{Table}
+
+
+Once again, congratulations on your fantastic achievement! We look forward to your ideas flourishing and hope to stay connected for future events.
+
+Travel partner - {Yatra Logo}
+
+Best Regards,
+
+Alexa Developers SRM ❤️.

@@ -1,0 +1,16 @@
+Dear {{=it.name}},
+
+Thank you for attending the Puzzle Perfect Programming Event! We hope you found it interesting and engaging. It was a pleasure to have you with us.
+
+Attached to this email, you will find Google Drive link with the certificates. Please be sure to download and save it!
+
+Drive link: https://drive.google.com/drive/folders/1ll80AVvjLHMF7e4aA7xpYfpEsX5KOUbQ
+
+Thank you once again for your participation, and we look forward to seeing you at future events!
+
+
+Travel partner - Yatra Logo
+
+Best Regards,
+
+Alexa Developers SRM ❤️.

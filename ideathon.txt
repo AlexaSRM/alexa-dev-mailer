@@ -1,0 +1,34 @@
+Greetings From 
+Alexa Developers SRM!
+
+Greetings {{=it.name}},
+
+Team id: {{=it.teamId}},
+Team name: {{=it.teamName}},
+
+Your registration for the Regener8 Ideathon has been successfully confirmed. We are thrilled to have you on board and look forward to seeing the innovative ideas your team will bring to the table.
+
+Next Steps:
+To proceed, we require each team to submit a PowerPoint presentation (PPT) detailing your project idea. This PPT should adhere to the guidelines provided in the sample PPT that will be shared with you. Please ensure that your PPT is well-structured, concise, and effectively conveys your idea. The shortlisting of participants for the next round will be based on the evaluation of these submissions.
+
+Tracks:
+Please note that the tracks provided for the Ideathon are as follows:
+- Mobility and Transportation
+- Developer/Creator Experience
+- Entertainment Tech
+- Open Innovation
+It is mandatory to use the provided PPT template for your submission. Any PPT submitted that does not use the provided template will not be evaluated.
+
+Important Details:
+- Submission Deadline: 3:00 PM, 27th August, 2024
+- Submission Link: https://forms.gle/BKXNdCenNzkWkZaR9
+- PPT Template: https://docs.google.com/presentation/d/1bOqAgSoDfM-GlHK2tpUTEDx0xsIm53fcU9hoCPBGMNg
+- Open Innovation
+
+For any queries, please reach out to us on the WhatsApp group formed for the Ideathon.
+Whatsapp invite- https://chat.whatsapp.com/CaDEKwEDRVRFKHeuSebHfE
+
+Best of luck, and we can't wait to see your creative ideas!
+
+Best Regards,
+Alexa Developers SRM ❤️.

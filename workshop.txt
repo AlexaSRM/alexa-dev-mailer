@@ -1,0 +1,22 @@
+Dear {{=it.firstName}},
+Congratulations! Your registration for the WebSlinger: Mastering Web Development workshop has been successfully confirmed. We're excited to have you join us for this hands-on learning experience.
+
+Date: 28th August, 2024
+Time: 9 AM
+Location: MINI HALL-2
+
+While your registration has been confirmed, we request that you RSVP using the link provided below to confirm your attendance at the event. This step is necessary for us to accurately plan and accommodate all participants.
+
+RSVP link: {{=it.rsvpLink}}
+
+To ensure that you have the best experience during the workshop, please note the following important instructions:
+1. Bring Your Laptop and Charger: This workshop is hands-on, so it is mandatory for all participants to bring their laptops and chargers.
+2. Pre-installation Requirements:
+    a. Node.js: Please download and install Node.js from the following link: https://nodejs.org/en/download/prebuilt-installer
+    b. VSCode: Please download and install Visual Studio Code from the following link: https://code.visualstudio.com/download
+Ensuring these software tools are installed on your laptop before arriving will allow us to maximize our time and dive straight into the workshop content.
+
+We look forward to seeing you soon and starting this web development journey together!
+
+Best Regards,
+Alexa Developers SRM ❤️.

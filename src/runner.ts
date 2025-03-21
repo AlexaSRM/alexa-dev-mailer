@@ -13,6 +13,12 @@ const delay = delayInms => {
     }, delayInms);
   });
 };
+
+// Helper function to convert a string to title case
+const toTitleCase = (str) => {
+  return str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+};
+
 export const runnerFunction = async (options: { list: string; html: string; text: string; subject: string }) => {
   try {
     console.log(chalk.blue(chalk.bold('Info ')) + 'Reading HTML File...');
@@ -33,34 +39,49 @@ export const runnerFunction = async (options: { list: string; html: string; text
 
     const bulkEmails = [];
     for (let i = 0; i < responseLength; i++) {
-      console.log("Here")
       let user = response.users[i];
-      console.log(user);
-      bulkEmails.push(
-        createEmail(
-          user.srmMailId,
-          user.firstName + ' ' + user.lastName,
-          getTemplatedString(user, htmlBuffer.toString()),
-          getTemplatedString(user, textBuffer.toString()),
-          options.subject,
-        ),
-      );
-      // let mail = createSesMail(
-      //   getTemplatedString(user, htmlBuffer.toString()),
-      //   getTemplatedString(user, textBuffer.toString()),
-      //   options.subject,
-      //   user.srmMailId,
-      // );
-      // await delay(500);
-      // try {
-      //   await sendEmail(mail);
-      //   console.log(chalk.green(chalk.bold(`Success [${(success += 1)}] `)) + 'Email sent to ' + user.email);
-      // } catch (err) {
-      //   failedEmails.push(user.email);
-      //   console.error(chalk.red(chalk.bold(`Error [${(failed += 1)}]`)) + user + err.message);
-      // }
+      try {
+        // Trim spaces, convert email to lowercase and name to title case
+        const email = user.mail.trim().toLowerCase();
+        // const name = `${user.firstName.trim()} ${user.lastName.trim()}`;
+        // const email = user.srmEmailId.trim().toLowerCase();
+        const name = user.name.trim();
+        const titleCaseName = toTitleCase(name).trim();
+        user.name = toTitleCase(user.name.trim())
+        // user.rsvpLink = "https://flask-production-acb6.up.railway.app/api/puzzle/rsvp/"+user.registrationNumber;
+        console.log(`Processing user: ${titleCaseName} <${email}>`);
+
+        bulkEmails.push(
+          createEmail(
+            email,
+            titleCaseName,
+            getTemplatedString(user, htmlBuffer.toString()),
+            getTemplatedString(user, textBuffer.toString()),
+            options.subject,
+          ),
+        );
+
+        // Uncomment to simulate sending individual emails:
+        // let mail = createSesMail(
+        //   getTemplatedString(user, htmlBuffer.toString()),
+        //   getTemplatedString(user, textBuffer.toString()),
+        //   options.subject,
+        //   email,
+        // );
+        // await delay(500);
+        // await sendEmail(mail);
+        
+        success += 1;
+        console.log(chalk.green(chalk.bold(`Success [${success}] `)) + 'Email created for ' + email);
+      } catch (err) {
+        failed += 1;
+        failedEmails.push(user.srmMailId);
+        console.error(chalk.red(chalk.bold(`Error [${failed}]`)) + 'Email failed for ' + user.srmMailId + ': ' + err.message);
+      }
     }
-    await sendBulkEmail(bulkEmails);
+
+    const id = await sendBulkEmail(bulkEmails);
+    console.log(chalk.blue(chalk.bold('Info ')) + 'Bulk Email ID: ' + id);
     console.log(chalk.blue(chalk.bold('Info ')) + 'Mailing process finished');
     console.log(
       chalk.blue(chalk.bold('Total ')) +
@@ -70,6 +91,7 @@ export const runnerFunction = async (options: { list: string; html: string; text
         chalk.red(chalk.bold(' Failed ')) +
         failed,
     );
+
     if (failedEmails.length > 0) {
       console.log(chalk.red(chalk.bold('Failed Emails: ')) + failedEmails.join(', '));
     }

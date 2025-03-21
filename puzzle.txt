@@ -1,0 +1,14 @@
+Dear {{=it.firstName}},
+We are thrilled to have you join us for the upcoming Puzzle Perfect Programming competition! Your enthusiasm and participation will make this event a memorable and exciting experience for everyone involved.
+
+To ensure smooth coordination, we kindly request that you RSVP using the link provided below. Confirming your attendance will help us make the necessary arrangements and provide you with the best possible experience during the competition.
+
+RSVP Link: {{=it.rsvpLink}}
+
+Please complete your RSVP at your earliest convenience. If you have any questions or need further assistance, feel free to reach out to us.
+We look forward to your participation and wish you the best of luck!
+
+Travel Partner - Yatra
+
+Best Regards,
+Alexa Developers SRM ❤️.

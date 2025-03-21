@@ -1,0 +1,14 @@
+Greetings From
+Alexa Developers SRM!
+
+Dear {{=it.firstName}},
+
+We are thrilled to see such a high level of interest and participation in our upcoming VlogIt event! The number of submissions we’ve received has exceeded our expectations. In light of this overwhelming response, we will review all best works that would be submitted to ensure that we feature the most compelling and high-quality content during the event. This review process will help us shortlist the best participants who will be taking part.
+
+Please be assured that each submission will be evaluated with utmost care and consideration. We aim to provide a platform that highlights the most engaging and innovative vlogs, giving all participants a chance to shine.
+
+We appreciate your understanding and patience as we carry out this process. We will notify shortlisted participants shortly with further details about the next steps.
+Google Form- https://forms.gle/zc1oPcMQUe8x4bEA7
+
+Warm Regards,
+Alexa Developers SRM ❤️.

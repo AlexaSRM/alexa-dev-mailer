@@ -1,0 +1,16 @@
+Dear {{=it.name}},
+
+We are thrilled to have had your participation in the Regener8 Ideathon. Your innovative ideas, enthusiasm and dedication made the event a great success, and we truly appreciate all your efforts.
+
+As a token of appreciation, please find attached a drive link with your Certificate of Participation in the ideathon. We hope that this certificate serves as a reminder of your creativity and hard work during the event.
+
+Drive link: https://drive.google.com/drive/folders/1JWL4Va5CjP_N84J3M7Zx5fO6G68OogCn
+
+We encourage you to continue nurturing your innovative spirits and wish you well in all your future endeavours!
+
+Travel partner - {YatraLogo}
+
+Best Regards,
+
+Alexa Developers SRM ❤️.
+

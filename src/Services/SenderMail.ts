@@ -5,7 +5,7 @@ const mailerSend = new MailerSend({
   apiKey: process.env.API_KEY,
 });
 
-const sentFrom = new Sender("alexaverse@alexadevsrm.org", "Alexa Developers SRM");
+const sentFrom = new Sender("no-reply@alexadevsrm.org", "Alexa Developers SRM");
 
 export const createEmail = (email: any, name: any, html: string, text: string, subject: string) => {
     return new EmailParams()
@@ -21,6 +21,7 @@ export const createEmail = (email: any, name: any, html: string, text: string, s
 export const sendBulkEmail = async (emails: EmailParams[]) => {
     const res = await mailerSend.email.sendBulk(emails);
     console.log(res);
+    return res.body.bulk_email_id;
 }
 // const bulkEmails = [];
 
